@@ -631,11 +631,6 @@ Masthead
 	position: relative;
 }
 
-.logo {
-	float left;
-	width: auto;
-}
-
 .header-image {
 	border-top: 1px solid #ccc;
 	clear: left;
