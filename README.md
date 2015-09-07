@@ -1,5 +1,5 @@
 ## Earmarked
-Earmarked is a clean lightweight, two column theme focusing on what matters, your content [Diverse Themes](http://diversethemes.com). Designed by [Derek Punsalan](https://twitter.com/derekpunsaln) and developed by [Diverse Themes](http://diversethemes.com).
+Earmarked is a clean lightweight, two column theme focusing on what matters, your content [Diverse Themes](https://diversethemes.com). Designed by [Derek Punsalan](https://twitter.com/derekpunsaln) and developed by [Diverse Themes](https://diversethemes.com).
 
 ## Files to edit
 
