@@ -1,4 +1,7 @@
 ## Earmarked
+
+![Earmarked Screenshot](https://themeindex.io/wp-content/uploads/2015/09/earmarked.png)
+
 Earmarked is a clean lightweight, two column theme focusing on what matters, your content. Designed by [Derek Punsalan](https://twitter.com/derekpunsaln) and developed by [Theme Index](https://themeindex.io).
 
 ## Files to edit
