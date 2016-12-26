@@ -17,7 +17,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset "fonts/font-awesome.css"}}" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="{{asset "js/jquery.ghostHunter.js"}}"></script>
+    <script type="text/javascript" src="{{asset "js/jquery.ghostHunter.js"}}"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
 
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
@@ -25,7 +27,6 @@
 <body class="{{body_class}}">
 
 <div id="page" class="hfeed site">
-
     <header id="masthead" class="site-header" role="banner">
         <div class="header-wrapper">
             <nav id="site-navigation" class="main-navigation" role="navigation">
@@ -57,7 +58,8 @@
 
     <div id="content" class="site-content">
 
-    <div id="primary" class="content-area">
+    {{! USE FOR SIDEBAR <div id="primary" class="content-area"> }}
+    <div>
         <main id="main" class="site-main" role="main">
             <section id="results"></section>
                 <script>
@@ -70,6 +72,8 @@
         </main><!-- #main -->
     </div><!-- #primary -->
 
+
+    {{!-- I don't want a side bar right now
     <div id="secondary" class="widget-area" role="complementary">
         <aside class="widget">
             {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" /></a>{{/if}}
@@ -91,6 +95,7 @@
             </div>
         </footer>
     </div><!-- #secondary -->
+    --}}
 
     </div><!-- #content -->
 </div><!-- #page -->
@@ -102,6 +107,6 @@
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/navigation.js"}}"></script>
-
+    <script type="text/javascript" src="{{asset "js/d3_graphic.js"}}"></script>
 </body>
 </html>

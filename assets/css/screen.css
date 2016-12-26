@@ -636,7 +636,8 @@ Masthead
 	clear: left;
 	max-width: 100%;
 	overflow: hidden;
-	min-height: 250px;
+	min-height: 100px;
+        //padding-top: 8px;
 }
 
 .header-image img {
@@ -1073,7 +1074,7 @@ Content
 }
 
 .content-wrapper {
-	padding: 0 0 0 24%;
+	padding: 0 3% 0 24%;
 }
 
 .entry-meta{
@@ -1085,6 +1086,7 @@ Content
 	margin-top: 4px;
 	color: #aaa;
 	line-height: 1.5 !important;
+        padding-left: 3%;
 }
 
 .entry-title a {
@@ -1440,7 +1442,7 @@ Footer
 	overflow: hidden;
 	text-align: center;
 	border-radius: 50px;
-	padding: 15px;
+	padding: 3px;
 	border: 1px solid #ccc;
 	max-width: 200px;
 }
@@ -1458,4 +1460,8 @@ Footer
 
 .newer-posts {
 	margin: 0 15px 0 0;
+}
+
+.nav-current {
+    text-decoration: underline;
 }
