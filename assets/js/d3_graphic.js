@@ -1,6 +1,10 @@
-(function (d3, Math, parseInt, setInterval) {
-var containerHeight = parseInt(d3.select('.header-image').style('height').slice(0, -2)), // TODO: pad?
-    containerWidth = parseInt(d3.select('.header-image').style('width').slice(0, -2)),
+window.onresize = (function (d3, Math, parseInt, setInterval, window) {
+var containerHeight = function() {
+        return parseInt(d3.select('.header-image').style('height').slice(0, -2));
+    },
+    containerWidth = function() {
+        return parseInt(d3.select('.header-image').style('width').slice(0, -2));
+    },
     H = 1,
     MAX_STEPS = 4,
     lineData = [],
@@ -8,16 +12,15 @@ var containerHeight = parseInt(d3.select('.header-image').style('height').slice(
     lineFunction = d3.line()
     .x(function(d) {return d.x})
     .y(function(d) {
-        return maxY === 0 ? containerHeight : containerHeight - ((d.y / maxY) * (containerHeight - 8));
+        return maxY === 0 ? containerHeight() - d.y : containerHeight() - ((d.y / maxY) * (containerHeight() - 8));
     })
     .curve(d3.curveLinear);
-    //.curve(d3.curveCatmullRom.alpha(1));
 
 
 // Ugh global objects
 function resetLineData() {
-    var rangeStep = containerWidth / Math.pow(2, MAX_STEPS) + 1;
-    lineData = _.range(0, containerWidth + rangeStep, rangeStep).map(function(val) {
+    var rangeStep = containerWidth() / Math.pow(2, MAX_STEPS) + 1;
+    lineData = _.range(0, containerWidth() + rangeStep, rangeStep).map(function(val) {
         return {
             x: val,
             y: 0
@@ -25,10 +28,10 @@ function resetLineData() {
     });
 }
 
-function makeLine(data) {
+function makeLine(data, isInstant) {
         d3.select('.header-image')
         .transition()
-        .duration(5000)
+        .duration(isInstant ? 1 : 5000)
         .select('path')
         .attr('d', lineFunction(data))
         .attr('stroke', 'gray')
@@ -49,7 +52,7 @@ function makeMpd(data, step, scale) {
         frozenRanges.push([mid, end]);
 
         // Add midpoint offset
-        data[mid].y += (containerHeight * Math.random() * scale);
+        data[mid].y += (containerHeight() * Math.random() * scale);
 
         // Hold maxY for scaling
         maxY = Math.max(maxY, Math.max(data[beginning].y, Math.max(data[end].y, data[mid].y)));
@@ -64,7 +67,7 @@ function makeMpd(data, step, scale) {
     });
 }
 
-(function() {
+return (function() {
     var tick = function() {
         if (step <= MAX_STEPS) {
             makeMpd(lineData, step, scale);
@@ -82,8 +85,8 @@ function makeMpd(data, step, scale) {
     // Start with step 0
     resetLineData();
     d3.select(".header-image").append("svg")
-        .attr("height", containerHeight)
-        .attr("width", containerWidth)
+        .attr("height", containerHeight())
+        .attr("width", '100%')
         .append('path')
         .attr('d', lineFunction(lineData))
         .attr('stroke', 'gray')
@@ -94,5 +97,10 @@ function makeMpd(data, step, scale) {
     var scale = 1, step = 1;
     tick();
     setInterval(tick, 5000);
+    return function() {
+        scale = 1, step = 1, maxY = 0;
+        resetLineData();
+        makeLine(lineData, true);
+    };
 })();
-})(d3, Math, parseInt, setInterval);
+})(d3, Math, window.parseInt, window.setInterval);
