@@ -930,6 +930,14 @@ Menu
 		right: 0;
 		top: 4px;
 	}
+
+        .header-image {
+                border-top: 1px solid #ccc;
+                clear: left;
+                max-width: 100%;
+                overflow: hidden;
+                min-height: 50px;
+        }
 }
 
 /* Social Links */
