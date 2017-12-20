@@ -636,7 +636,7 @@ Masthead
 	clear: left;
 	max-width: 100%;
 	overflow: hidden;
-	min-height: 100px;
+	min-height: 50px;
         //padding-top: 8px;
 }
 
